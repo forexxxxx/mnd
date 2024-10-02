@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV MAKER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>CV MAKER</h1>
+    <form id="cvForm">
+        <h2>المعلومات الشخصية</h2>
+        <label for="fullName">الاسم بالكامل:</label>
+        <input type="text" id="fullName" required>
+        
+        <label for="birthDate">تاريخ الميلاد:</label>
+        <input type="date" id="birthDate" required>
+        
+        <label for="jobTitle">الوظيفة المراد كتابتها في السيرة:</label>
+        <input type="text" id="jobTitle" required>
+        
+        <label for="mobile">الموبايل:</label>
+        <input type="tel" id="mobile" required>
+        
+        <label for="maritalStatus">الحالة الاجتماعية:</label>
+        <input type="text" id="maritalStatus" required>
+
+        <h2>الخبرات</h2>
+        <label for="experience1">المكان 1:</label>
+        <input type="text" id="experience1" required>
+        <label for="duration1">مدة العمل:</label>
+        <input type="text" id="duration1" required>
+        <label for="position1">الوظيفة:</label>
+        <input type="text" id="position1" required>
+
+        <label for="experience2">المكان 2:</label>
+        <input type="text" id="experience2">
+        <label for="duration2">مدة العمل:</label>
+        <input type="text" id="duration2">
+        <label for="position2">الوظيفة:</label>
+        <input type="text" id="position2">
+
+        <label for="experience3">المكان 3:</label>
+        <input type="text" id="experience3">
+        <label for="duration3">مدة العمل:</label>
+        <input type="text" id="duration3">
+        <label for="position3">الوظيفة:</label>
+        <input type="text" id="position3">
+
+        <h2>المؤهل الدراسي</h2>
+        <label for="college">الكلية:</label>
+        <input type="text" id="college" required>
+        <label for="degree">الدرجة العلمية:</label>
+        <input type="text" id="degree" required>
+        <label for="grade">التقدير:</label>
+        <input type="text" id="grade" required>
+
+        <h2>المهارات</h2>
+        <label for="skills">ما هي المهارات التي تريد كتابتها:</label>
+        <input type="text" id="skills" required>
+
+        <h2>الكورسات</h2>
+        <label for="course1">اسم الكورس 1:</label>
+        <input type="text" id="course1" required>
+        <label for="provider1">من المقدم:</label>
+        <input type="text" id="provider1" required>
+        <label for="content1">محتوى الكورس:</label>
+        <input type="text" id="content1" required>
+
+        <label for="course2">اسم الكورس 2:</label>
+        <input type="text" id="course2">
+        <label for="provider2">من المقدم:</label>
+        <input type="text" id="provider2">
+        <label for="content2">محتوى الكورس:</label>
+        <input type="text" id="content2">
+
+        <button type="submit">إنشاء السيرة الذاتية</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('cvForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // هنا يمكنك إضافة كود لإرسال البيانات إلى خادم باستخدام Fetch API إذا لزم الأمر
+            
+            // عرض النتيجة
+            const result = `
+# السيرة الذاتية لـ ${data.fullName}
+
+## المعلومات الشخصية
+- الاسم: ${data.fullName}
+- تاريخ الميلاد: ${data.birthDate}
+- الوظيفة: ${data.jobTitle}
+- الموبايل: ${data.mobile}
+- الحالة الاجتماعية: ${data.maritalStatus}
+
+## الخبرات
+1. ${data.experience1}
+   - المدة: ${data.duration1}
+   - الوظيفة: ${data.position1}
+2. ${data.experience2}
+   - المدة: ${data.duration2}
+   - الوظيفة: ${data.position2}
+3. ${data.experience3}
+   - المدة: ${data.duration3}
+   - الوظيفة: ${data.position3}
+
+## المؤهل الدراسي
+- الكلية: ${data.college}
+- الدرجة العلمية: ${data.degree}
+- التقدير: ${data.grade}
+
+## المهارات
+${data.skills}
+
+## الكورسات
+1. ${data.course1}
+   - المقدم: ${data.provider1}
+   - المحتوى: ${data.content1}
+2. ${data.course2}
+   - المقدم: ${data.provider2}
+   - المحتوى: ${data.content2}
+            `;
+            
+            document.getElementById('result').innerHTML = marked.parse(result);
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+</body>
+</html>
